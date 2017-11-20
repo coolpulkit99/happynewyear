@@ -212,7 +212,7 @@
 
 
 <section>
-    <div>
+    <div id="aa">
         <!--<h1>page1</h1>-->
         <!--<p>마우스를 올려주세요</p>-->
 
@@ -221,7 +221,7 @@
         <object id="my-svg" type="image/svg+xml" data="svg/svg%20animation/download_animated.svg"></object>
 
     </div>
-    <div>
+    <div id="ab">
         <!--<h1>page2</h1>-->
         <h1>Describes it all...</h1>
         <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, tenetur.</p>-->
@@ -300,7 +300,8 @@ body{font-size: xx-large;
         transition: 2s;
         /*z-index;2;*/
     }
-    div:nth-child(1):active{
+    /*div:nth-child(1):active*/
+    .myclass{
         transform: rotateY(-180deg);
         /*background: #ff88cf;*/
         background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
@@ -310,5 +311,9 @@ body{font-size: xx-large;
     /*z-index:-21;*/
 /*}*/
 </style>
+
+<script>
+    document.addEventListener("click",function(){  document.getElementsById("aa").toggle("myclass");});
+</script>
 </body>
 </html>
