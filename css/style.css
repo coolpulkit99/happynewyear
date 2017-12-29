@@ -1,0 +1,7 @@
+.overlay{
+    height: auto;
+    width: auto;
+    background: black;
+    z-index: 10;
+position: absolute;
+}
