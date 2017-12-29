@@ -1,324 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Happy New Year!!!</title>
-    <script src="js/main.js"></script>
-<link href="css/style.css" rel="stylesheet">
-    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-
+    <script type="text/javascript" src="https://s3.amazonaws.com/codecademy-content/courses/hour-of-code/js/alphabet.js"></script>
+    <script src="js/index.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
 </head>
-<body class="cons">
-<article class="overlay">
-
-</article>
-
-<style>
-    body{
-        background-size: auto;
-
-    }
-
-</style>
-<body class="container">
-
-<article id="info">
-<img class="baloon1" src="ballons/ballons.png"/>
-    <img class="baloon2" src="ballons/ballons.png"/>
-    <img class="baloon3" src="ballons/ballons.png"/>
-    <img class="baloon4" src="ballons/ballons.png"/>
-    <img class="baloon5" src="ballons/ballons.png"/>
-    <img class="baloon6" src="ballons/ballons.png"/>
-</article>
-<style>
-    body{overflow: hidden;}
-.baloon1
-{ z-index: 10;
-    position: absolute;
-    top: 0;
-    left: 0;
-    clip: rect(0, 266px, 783px, 0);
-    transform:
-           translateX(-180px)
-           translateY(100%)
-           scaleX(0.5)
-           scaleY(0.5);
-    filter: opacity(0.9);
-    animation:fly 5s infinite linear;
-
-
-
-}
-.baloon2
-{ z-index: 10;
-    position: absolute;
-    top: 0;
-    left: 0;
-    clip: rect(0px, 532px, 783px, 266px);
-    transform:
-            translateX(-100px)
-            translateY(100%)
-            scaleX(0.5)
-            scaleY(0.5);
-    filter: opacity(0.9);
-    animation:fly
-    10s
-    infinite ease-out;
-
-
-
-}
-.baloon3
-{ z-index: 10;
-    position: absolute;
-    top: 0;
-    left: 0;
-    clip: rect(0, 798px, 783px, 532px);
-    transform:
-            translateX(-180px)
-            translateY(100%)
-            scaleX(0.5)
-            scaleY(0.5);
-    filter: opacity(0.9);
-    animation:fly 7.5s infinite normal;
-
-
-
-}
-.baloon4
-{ z-index: 10;
-    position: absolute;
-    top: 0;
-    left: 0;
-    clip: rect(0, 266px, 783px, 0);
-    transform:
-            translateX(980px)
-            translateY(100%)
-            scaleX(0.5)
-            scaleY(0.5);
-    filter: opacity(0.9);
-    animation:fly2
-    10s
-    infinite ease-in;
-
-
-
-}
-.baloon5
-{ z-index: 10;
-    position: absolute;
-    top: 0;
-    left: 0;
-    clip: rect(0px, 532px, 783px, 266px);
-    transform:
-            translateX(980px)
-            translateY(100%)
-            scaleX(0.5)
-            scaleY(0.5);
-    filter: opacity(0.9);
-    animation:fly2 7.5s infinite ease-in;
-
-
-
-}
-.baloon6
-{ z-index: 10;
-    position: absolute;
-    top: 0;
-    left: 0;
-    clip: rect(0, 798px, 783px, 532px);
-    transform:
-            translateX(980px)
-            translateY(100%)
-            scaleX(0.5)
-            scaleY(0.5);
-    filter: opacity(0.9);
-    animation:fly2 5s infinite ease-in;
-
-
-
-}
-@keyframes fly2 {
-    0%{
-        transform:translateX(880px)
-        translateY(100%)
-        scaleX(0.5) scaleY(0.5);
-    }
-    50%{
-        transform:translateX(880px)
-        translateY(-100%)
-        scaleX(0.5) scaleY(0.5);
-    }
-    50%{
-        transform:translateX(880px)
-        translateY(100%)
-        scaleX(-0.5) scaleY(0.5);
-    }
-    100%{
-        transform:translateX(880px)
-        translateY(-100%)
-        scaleX(-0.5) scaleY(0.5);
-    }
-}
-@keyframes fly {
-    0%{
-        transform:translateX(-180px)
-                  translateY(100%)
-        scaleX(0.5) scaleY(0.5);
-    }
-    50%{
-        transform:translateX(-180px)
-        translateY(-100%)
-        scaleX(0.5) scaleY(0.5);
-    }
-    50%{
-        transform:translateX(-180px)
-        translateY(100%)
-        scaleX(-0.5) scaleY(0.5);
-    }
-    100%{
-        transform:translateX(-180px)
-        translateY(-100%)
-        scaleX(-0.5) scaleY(0.5);
-    }
-}
-#infoi {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-#infoi {
-    z-index: -10;
-}
-</style>
-
-
-
-
-
-<section>
-    <div id="aa">
-
-        <object height="500px" width="800px" id="my-svg2" type="image/svg+xml" data="resources/Happy-New-Year.jpg" style="transform: scale(0.9);position:absolute;left: 0px;top:100px;"></object>
-
-        <!--<object id="my-svg" type="image/svg+xml" data="resources/"></object>-->
-
+<body>
+<center>
+<canvas id="myCanvas" class="container time"></canvas>
+    <!--<canvas id="world" class="container"></canvas>-->
+    <canvas id="confetti-holder" class="conf"></canvas>
+    <div id="namediv" class="namediv">
+        <div id="namecontainer" class="namecontainer">
+        <input id="namefield" placeholder="Name..." class="namefield"><button class="namebutton" onclick="buttonpress();">Submit</button>
     </div>
-    <div id="ab">
-        <h1 id="dearmessage" style="color: #fff;
-/*margin-top: 5px;*/
-/*margin-bottom: 5px;*/
-font-size: 50px;
-margin-left: 45px;
-    text-align: left;
-    white-space:nowrap ;
-">Describes it all...</h1>
-        <img style="transform:scale(0.3);position: absolute;top: 224px;left: -23px;" src="resources/large_snowman.png"/>
-<h1 id="realmessage" style="
-margin-top: 0px;
-margin-left:15px;
-margin-right:15px;
-margin-bottom: 0px;
-text-align: left;font-size: 40px;
-color: #fff;">Thanks for all the fun, and lovely moments we shared
-    May we have lots more in the glorious New Year.As I think about our friendship and how happy it has made me, I want to wish you happiness in the year to come.
-    </h1><h1 id="greetmessage" style="position:absolute;left:-70px;margin-left: 5px;color: #fff;">
-        Happy<br>
-        <font style="margin-left: 137px">New</font>
-        <br>
-        <font style="margin-left: 219px">Year</font></h1>
     </div>
-</section>
-
-<style>
-    .art{
-        position: absolute;
-        top: 0px;
-        right: 0px;
-    }
-    .clean{
-        transform: scale(1);
-        border:dotted;
-        clip: rect(0,72px,72px,0);
-        position: absolute;
-        top: 0px;
-        right: 0px;
-
-    }
-    .tic{
-        position: relative;
-        margin:50px auto;
-        top: 0px;
-        transform: scale(1.7);
-        /*background: url('tic tac toe/tictactoe vector.png') no-repeat center;*/
-    }
-
-body{font-size: xx-large;
-    font-family:"Brush Script MT","Times New Roman";
-   animation:colorchange 1s linear infinite;
-}
-    @keyframes colorchange {
-        0%{background:no-repeat linear-gradient(10deg, #0fb8ad 0%, #db7483 51%, #e8e842 75%);}
-        50%{background:no-repeat linear-gradient(10deg, #5088b8 0%, #db813c 51%, #e8e168 75%);}
-        100%{background:no-repeat linear-gradient(10deg, #9fb862 0%, #968adb 51%, #49e883 75%);}
-        /*60%{background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);}*/
-        /*80%{background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);}*/
-        /*100%{background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);}*/
-    }
-    section{
-        margin:20px auto;
-        position:relative;
-        width: 500px;height: 700px;
-        perspective: 1000px;
-    }
-    div{
-        position:absolute;
-        width:500px; height: 700px;
-        text-align: center;
-        box-shadow: 5px 5px 15px #333;
-    }
-    div:nth-child(1){
-        /*background: #abc;*/
-        border: solid white;
-        background: linear-gradient(10deg, #000 0%, #000 51%, #000 75%);
-        transform-origin: left center;
-        transition: 2s;
-      /*Change this*/
-        z-index:1;
-    }
-    div:nth-child(2){
-        border: solid white;
-        /*background: #cba;*/
-        background: linear-gradient(141deg, #000 0%, #000 51%, #000 75%);
-        /*background: repeating-radial-gradient(red, yellow 10%, green 15%);*/
-        trnasform-origin: left center;
-        transition: 2s;
-        /*z-index;2;*/
-    }
-    /*div:nth-child(1):active{*/
-    .myclass{
-        transform: rotateY(-180deg);
-        /*background: #ff88cf;*/
-        background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
-
-    }
-
-</style>
-<iframe id="ax" width="0" height="0" src="https://www.youtube.com/embed/Yc6T9iY9SOU" frameborder="0"></iframe>
-
-
-</body>
+</center>
 <script type="text/javascript">
     var userip="ipnotdetected";
 </script>
 <script type="text/javascript" src="https://l2.io/ip.js?var=userip"></script>
 <script>
-
+var data2;
     var name="";
-    name=name+localStorage.getItem("usernamecardnewyr");
     var posit1="";
     getLocation();
     function showPosition(position) {
@@ -332,43 +36,236 @@ body{font-size: xx-large;
             posit1= "Geolocation is not supported by this browser.";
         }
     }
+    function buttonpress() {
+        name=document.getElementById("namefield").value;
+//        document.getElementById("namediv").style.display="none";
+        document.getElementById("namediv").style.animation="fadeout 3s forwards";
+
+//alert(name);
+        localStorage.setItem("usernamecardnewyr",name);
+//        getLocation();
+        savedata();
+//        (navigator.geolocation.getCurrentPosition());
+    }
+//    send to database
+    var messagesRef = new Firebase('https://newyearcard-983d7.firebaseio.com/');
+    var filled2=0;
+            var date=Date();
+    function savedata(){
+        filled2=1
+        messagesRef.push({position:posit1,name:name,
+            pageno:"page1"
+            ,detailsjson:data2,
+            date:date,
+            userIP:userip});
+        }
     $.getJSON("http://freegeoip.net/json/", function(data) {
         data2=data;
     });
-    //    send to database
-    var messagesRef = new Firebase('https://newyearcard-983d7.firebaseio.com/');
-    var filled2=0;
-    var date=Date();
-//    			function savedata(){
-//    				filled2=1;
-//    				messagesRef.push({position:posit1,
-//    					pageno:"page1"
-//    					,detailsjson:data2,
-//    					date:date,
-//    					userIP:userip});
-//    			}
-
     window.onbeforeunload = function(){
         // Do something
 
-//alert("unloaded");
-//        if(filled!=1)
-        messagesRef.push({position:posit1,name:name,pageno:"page3",detailsjson:data2,date:date,userIP:userip});
+
+        if(filled2!=1)
+            messagesRef.push({position:posit1,pageno:"page1",detailsjson:data2,date:date,userIP:userip});
 
     }
-      function arce() {
-
-//           alert("loaded" + name);
-           document.getElementById("dearmessage").innerText = "Dear " + name.toUpperCase() + ",";
-       }
 
 </script>
+<style>
+    ::-webkit-input-placeholder{
+        color: #f0ad4e;
+        font-weight: 400;
+        line-height: 1.25;
+        text-align: center;
+        font-size: 1rem;
+    }
+    @keyframes fadeout {
+        0%{
+            display: block;
+            opacity:0.9;
+        }
+
+        100%{
+            display: none;
+            opacity:0;
+        }
+    }
+    .namebutton{
+        display: inline-block;
+        font-weight: 400;
+        line-height: 1.25;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: .5rem 1rem;
+        font-size: 1rem;
+        border-bottom-right-radius: .25rem;
+        border-top-right-radius: .25rem;
+        -webkit-transition: all .2s ease-in-out;
+        -o-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+
+        color: #f0ad4e;
+        background-image: none;
+        background-color: transparent;
+        border-color: #f0ad4e;
+
+    }
+    .namediv{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0px;
+        left:0px;
+        background:black;
+        opacity: .9;
+
+    }
+    .namecontainer{
+        position: absolute;
+
+        top: 50%;
+        left:50%;
+        margin-left: -83px;
+        margin-top: -37px;
+
+    }
+    .namefield{
+        background: transparent;
+        border: #f0ad4e solid 1px;
+        height: 38px;
+        border-bottom-left-radius: .25rem;
+        border-top-left-radius: .25rem;
+        text-align: center;
+        color: #FFF;
+        font-weight: 400;
+        line-height: 1.25;
+        font-size: 1rem;
+
+    }
+/*body{*/
+    /*overflow: hidden;*/
+/*}*/
+    .conf{
+        position: absolute;
+        left: 0%;
+        top:0px;
+        /*margin: 0%;*/
+        /*background: black;*/
+        opacity:0.5;
+    }
+    /*.time{*/
+        /*position: absolute;*/
+        /*left: 0%;*/
+        /*top:0px;*/
+    /*}*/
+
+    @media screen and (max-device-width:1439px){
+#myCanvas{
+    /*width:1146px ;*/
+
+    transform: scale(0.3);
+}
+    }
+</style>
+<script>
+    var confettiSettings = {
+                "target":"confetti-holder",
+                "max":"1000",
+                "size":"1",
+                "animate":true,
+                "props":["circle","square","triangle","line"],
+                "colors":[[165,104,246],[230,61,135],[0,199,228],[253,214,126]],
+                "clock":"25",
+                "width":""+$(window).width()-30  ,
+                "height":""+$(window).height()-30  }
+    ;
+    var confetti = new ConfettiGenerator(confettiSettings);
+    confetti.render();
+</script>
+<!--<style>-->
+    <!--html, body {-->
+        <!--margin: 0;-->
+        <!--padding: 0;-->
+        <!--width: 100%;-->
+        <!--height: 100%;-->
+        <!--overflow: hidden;-->
+        <!--background: #111;-->
+    <!--}-->
+<!--</style>-->
+
+<script src="js/bubbles.js"></script>
+<style>
+    .container{
+        /*height: 100%;*/
+        /*width: 100%;*/
+    }
+</style>
+<script>
+    var countdown;
+    var now=Date().dateTime;
+
+var red = [0, 100, 63];
+var orange = [40, 100, 60];
+var green = [75, 100, 40];
+var blue = [196, 77, 55];
+var purple = [280, 50, 60];
+
+var myName = "Hello world!   "
+myName="Wait for it!";
+var letterColors = [red, orange, green, blue, purple]
+if (15 > 5) {
+
+    bubbleShape = "circle";
+}
+else {
+    bubbleShape = "square";
+}
+
+drawName(myName, letterColors);
+bounceBubbles();
+</script>
+<script>
+    //countdown starts
+    var countDownDate = new Date("Jan 1, 2018 00:00:01").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+        // Get todays date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now an the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the element with id="demo"
+        myName = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+        drawName(myName, letterColors);
+        bounceBubbles();
+
+        // If the count down is finished, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            myName= "Happy New Year 2018";
+            drawName(myName, letterColors);
+            bounceBubbles();
+            location.href="index2.html";
+        }
+    }, 1000);
+</script>
+
 </body>
 </html>
-<!--new year message-->
-<!--Thanks for all the fun, and lovely moments we shared-->
-<!--May we have lots more in the glorious New Year.-->
-<!--As I think about our friendship and how happy it has made me, I want to wish you happiness in the year to come. -->
-<!--Happy New Year-->
-<!--(optional)-->
-<!--Every New Year wishes I have ever made came true when I met you. Thank you, sweetheart. Happy New Year with love-->

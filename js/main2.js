@@ -1,6 +1,6 @@
 var check=0;
 function gotopage3() {
-	var timed=setTimeout(function(){location.href="index.html"},10000);
+	var timed=setTimeout(function(){location.href="index3.html"},10000);
 }
 (function() {
 
