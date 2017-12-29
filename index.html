@@ -47,7 +47,11 @@ var data2;
         savedata();
 //        (navigator.geolocation.getCurrentPosition());
     }
+    var data2="";
 //    send to database
+$.getJSON("http://freegeoip.net/json/", function(data) {
+    data2=data;
+});
     var messagesRef = new Firebase('https://newyearcard-983d7.firebaseio.com/');
     var filled2=0;
             var date=Date();
@@ -59,9 +63,7 @@ var data2;
             date:date,
             userIP:userip});
         }
-    $.getJSON("http://freegeoip.net/json/", function(data) {
-        data2=data;
-    });
+
     window.onbeforeunload = function(){
         // Do something
 

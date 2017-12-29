@@ -332,10 +332,11 @@ body{font-size: xx-large;
             posit1= "Geolocation is not supported by this browser.";
         }
     }
+    var data2="";
+    //    send to database
     $.getJSON("http://freegeoip.net/json/", function(data) {
         data2=data;
     });
-    //    send to database
     var messagesRef = new Firebase('https://newyearcard-983d7.firebaseio.com/');
     var filled2=0;
     var date=Date();
