@@ -7,4 +7,7 @@ document.addEventListener("click",function(){
     document.getElementById("aa").classList.toggle("myclass");
     if(i==0)
     {document.getElementById("ax").src+="?autoplay=1";i++;}
+    arce();
+    // $('h1[name=dearmessage]').quickfit();
+
 });

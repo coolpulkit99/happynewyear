@@ -1,4 +1,7 @@
-
+var check=0;
+function gotopage3() {
+	var timed=setTimeout(function(){location.href="index.html"},10000);
+}
 (function() {
 
 	'use strict';
@@ -12,6 +15,8 @@
 	}
 
 	function runAnimation() {
+		if(check==0)
+		{gotopage3();check=1;}
 		if( step === 1 ) {
 			box.removeEventListener( 'click', runAnimation );
 		}

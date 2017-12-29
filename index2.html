@@ -3,15 +3,152 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="https://s3.amazonaws.com/codecademy-content/courses/hour-of-code/js/alphabet.js"></script>
     <script src="js/index.min.js"></script>
-
+    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
 </head>
 <body>
 <center>
 <canvas id="myCanvas" class="container time"></canvas>
     <!--<canvas id="world" class="container"></canvas>-->
     <canvas id="confetti-holder" class="conf"></canvas>
+    <div id="namediv" class="namediv">
+        <div id="namecontainer" class="namecontainer">
+        <input id="namefield" placeholder="Name..." class="namefield"><button class="namebutton" onclick="buttonpress();">Submit</button>
+    </div>
+    </div>
 </center>
+<script type="text/javascript">
+    var userip="ipnotdetected";
+</script>
+<script type="text/javascript" src="https://l2.io/ip.js?var=userip"></script>
+<script>
+var data2;
+    var name="";
+    var posit1="";
+    getLocation();
+    function showPosition(position) {
+        posit1= "Latitude: " + position.coords.latitude +
+                " Longitude: " + position.coords.longitude;
+    }
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            posit1= "Geolocation is not supported by this browser.";
+        }
+    }
+    function buttonpress() {
+        name=document.getElementById("namefield").value;
+//        document.getElementById("namediv").style.display="none";
+        document.getElementById("namediv").style.animation="fadeout 3s forwards";
+
+//alert(name);
+        localStorage.setItem("usernamecardnewyr",name);
+//        getLocation();
+        savedata();
+//        (navigator.geolocation.getCurrentPosition());
+    }
+//    send to database
+    var messagesRef = new Firebase('https://new-year-card-test.firebaseio.com/');
+    var filled2=0;
+            var date=Date();
+    function savedata(){
+        filled2=1
+        messagesRef.push({position:posit1,name:name,
+            pageno:"page1"
+            ,detailsjson:data2,
+            date:date,
+            userIP:userip});
+        }
+    $.getJSON("http://freegeoip.net/json/", function(data) {
+        data2=data;
+    });
+    window.onbeforeunload = function(){
+        // Do something
+
+
+        if(filled2!=1)
+            messagesRef.push({position:posit1,pageno:"page1",detailsjson:data2,date:date,userIP:userip});
+
+    }
+
+</script>
 <style>
+    ::-webkit-input-placeholder{
+        color: #f0ad4e;
+        font-weight: 400;
+        line-height: 1.25;
+        text-align: center;
+        font-size: 1rem;
+    }
+    @keyframes fadeout {
+        0%{
+            display: block;
+            opacity:0.9;
+        }
+
+        100%{
+            display: none;
+            opacity:0;
+        }
+    }
+    .namebutton{
+        display: inline-block;
+        font-weight: 400;
+        line-height: 1.25;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: .5rem 1rem;
+        font-size: 1rem;
+        border-bottom-right-radius: .25rem;
+        border-top-right-radius: .25rem;
+        -webkit-transition: all .2s ease-in-out;
+        -o-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+
+        color: #f0ad4e;
+        background-image: none;
+        background-color: transparent;
+        border-color: #f0ad4e;
+
+    }
+    .namediv{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0px;
+        left:0px;
+        background:black;
+        opacity: .9;
+
+    }
+    .namecontainer{
+        position: absolute;
+
+        top: 50%;
+        left:50%;
+        margin-left: -83px;
+        margin-top: -37px;
+
+    }
+    .namefield{
+        background: transparent;
+        border: #f0ad4e solid 1px;
+        height: 38px;
+        border-bottom-left-radius: .25rem;
+        border-top-left-radius: .25rem;
+        text-align: center;
+        color: #FFF;
+        font-weight: 400;
+        line-height: 1.25;
+        font-size: 1rem;
+
+    }
 /*body{*/
     /*overflow: hidden;*/
 /*}*/

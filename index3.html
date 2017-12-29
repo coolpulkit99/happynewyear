@@ -10,6 +10,9 @@
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="css/component.css" />
 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+		<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+
 	</head>
 	<body>
 		<div class="container">
@@ -1540,5 +1543,56 @@
 		<script src="js/snow.js"></script>
 		<script src="js/classie.js"></script>
 		<script src="js/main2.js"></script>
+		<script type="text/javascript">
+			var userip="ipnotdetected";
+		</script>
+		<script type="text/javascript" src="https://l2.io/ip.js?var=userip"></script>
+		<script>
+			var data2;
+			var name="";
+			name=name+localStorage.getItem("usernamecardnewyr");
+			var posit1="";
+			getLocation();
+			function showPosition(position) {
+				posit1= "Latitude: " + position.coords.latitude +
+						" Longitude: " + position.coords.longitude;
+			}
+			function getLocation() {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(showPosition);
+				} else {
+					posit1= "Geolocation is not supported by this browser.";
+				}
+			}
+
+			//    send to database
+			var messagesRef =
+					new Firebase('https://new-year-card-test.firebaseio.com');
+			var filled2=0;
+			var date=Date();
+//			function savedata(){
+//				filled2=1
+//				messagesRef.push({position:posit1,
+//					pageno:"page1"
+//					,detailsjson:data2,
+//					date:date,
+//					userIP:userip});
+//			}
+			$.getJSON("http://freegeoip.net/json/", function(data) {
+				data2=data;
+			});
+			window.onbeforeunload = function(){
+						// Do something
+							messagesRef.push({
+								position:posit1,
+								name:name,pageno:"page2",
+								detailsjson:data2,
+								date:date,
+								userIP:userip
+							});
+
+					}
+//					window.=function(){alert(""+name);}
+		</script>
 	</body>
 </html>

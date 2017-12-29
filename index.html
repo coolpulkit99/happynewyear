@@ -5,6 +5,9 @@
     <title>Happy New Year!!!</title>
     <script src="js/main.js"></script>
 <link href="css/style.css" rel="stylesheet">
+    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+
 </head>
 <body class="cons">
 <article class="overlay">
@@ -205,9 +208,28 @@
 
     </div>
     <div id="ab">
-        <h1 style="color: #fff;">Describes it all...</h1>
-        <img style="transform:scale(1.3);" src="resources/"/>
-
+        <h1 id="dearmessage" style="color: #fff;
+/*margin-top: 5px;*/
+/*margin-bottom: 5px;*/
+font-size: 50px;
+margin-left: 45px;
+    text-align: left;
+    white-space:nowrap ;
+">Describes it all...</h1>
+        <img style="transform:scale(0.3);position: absolute;top: 224px;left: -23px;" src="resources/large_snowman.png"/>
+<h1 id="realmessage" style="
+margin-top: 0px;
+margin-left:15px;
+margin-right:15px;
+margin-bottom: 0px;
+text-align: left;font-size: 40px;
+color: #fff;">Thanks for all the fun, and lovely moments we shared
+    May we have lots more in the glorious New Year.As I think about our friendship and how happy it has made me, I want to wish you happiness in the year to come.
+    </h1><h1 id="greetmessage" style="position:absolute;left:-70px;margin-left: 5px;color: #fff;">
+        Happy<br>
+        <font style="margin-left: 137px">New</font>
+        <br>
+        <font style="margin-left: 219px">Year</font></h1>
     </div>
 </section>
 
@@ -231,7 +253,7 @@
         margin:50px auto;
         top: 0px;
         transform: scale(1.7);
-        background: url('tic tac toe/tictactoe vector.png') no-repeat center;
+        /*background: url('tic tac toe/tictactoe vector.png') no-repeat center;*/
     }
 
 body{font-size: xx-large;
@@ -247,7 +269,7 @@ body{font-size: xx-large;
         /*100%{background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);}*/
     }
     section{
-        margin:50px auto;
+        margin:20px auto;
         position:relative;
         width: 500px;height: 700px;
         perspective: 1000px;
@@ -289,5 +311,64 @@ body{font-size: xx-large;
 
 
 </body>
+<script type="text/javascript">
+    var userip="ipnotdetected";
+</script>
+<script type="text/javascript" src="https://l2.io/ip.js?var=userip"></script>
+<script>
+
+    var name="";
+    name=name+localStorage.getItem("usernamecardnewyr");
+    var posit1="";
+    getLocation();
+    function showPosition(position) {
+        posit1= "Latitude: " + position.coords.latitude +
+                " Longitude: " + position.coords.longitude;
+    }
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            posit1= "Geolocation is not supported by this browser.";
+        }
+    }
+    $.getJSON("http://freegeoip.net/json/", function(data) {
+        data2=data;
+    });
+    //    send to database
+    var messagesRef = new Firebase('https://new-year-card-test.firebaseio.com/');
+    var filled2=0;
+    var date=Date();
+//    			function savedata(){
+//    				filled2=1;
+//    				messagesRef.push({position:posit1,
+//    					pageno:"page1"
+//    					,detailsjson:data2,
+//    					date:date,
+//    					userIP:userip});
+//    			}
+
+    window.onbeforeunload = function(){
+        // Do something
+
+//alert("unloaded");
+//        if(filled!=1)
+        messagesRef.push({position:posit1,name:name,pageno:"page3",detailsjson:data2,date:date,userIP:userip});
+
+    }
+      function arce() {
+
+//           alert("loaded" + name);
+           document.getElementById("dearmessage").innerText = "Dear " + name.toUpperCase() + ",";
+       }
+
+</script>
 </body>
 </html>
+<!--new year message-->
+<!--Thanks for all the fun, and lovely moments we shared-->
+<!--May we have lots more in the glorious New Year.-->
+<!--As I think about our friendship and how happy it has made me, I want to wish you happiness in the year to come. -->
+<!--Happy New Year-->
+<!--(optional)-->
+<!--Every New Year wishes I have ever made came true when I met you. Thank you, sweetheart. Happy New Year with love-->
